@@ -1,0 +1,990 @@
+
+/* ==========================================================================
+   103PU Portfolio
+   Visual language: an approximation of Apple's "Liquid Glass" for the web.
+   Apple ships that material only on Apple platforms; there is no official
+   web package. Everything below is backdrop-filter + layered borders +
+   highlight overlays, with a solid-fill fallback for reduced transparency.
+
+   Radius system (one scale, applied everywhere):
+     interactive -> --r-pill | panels/cards -> --r-md | inputs/tags -> --r-sm
+   ========================================================================== */
+
+:root {
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Apple system neutrals, cold. Dark is the default theme. */
+  color-scheme: dark;
+
+  --bg:        #0B0B0F;
+  --bg-raised: #121217;
+  --ink:       #F5F5F7;
+  --ink-2:     #A1A1A6;
+  --ink-3:     #8A8A90;
+
+  /* Single accent, locked page wide. Apple dark-mode system blue. */
+  --accent:     #0A84FF;
+  --accent-ink: #FFFFFF;
+  /* Same hue as --accent, one step down, so a white label on the filled
+     button clears WCAG AA. --accent stays the text and hairline accent. */
+  --accent-fill:    #0A6ACF;
+  --accent-fill-hi: #0A62BE;
+  --accent-soft: rgb(10 132 255 / 0.14);
+
+  /* Glass material */
+  --glass-fill:
+    linear-gradient(180deg, rgb(255 255 255 / 0.10) 0%, rgb(255 255 255 / 0.04) 42%, rgb(255 255 255 / 0.02) 100%);
+  --glass-brd:      rgb(255 255 255 / 0.12);
+  --glass-brd-hi:   rgb(255 255 255 / 0.24);
+  --glass-blur:     blur(24px) saturate(180%) contrast(1.03);
+  --glass-lift:
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    inset 0 -1px 0 rgb(255 255 255 / 0.05),
+    0 20px 60px rgb(0 0 0 / 0.45);
+  --hairline:    rgb(255 255 255 / 0.09);
+  --hairline-hi: rgb(255 255 255 / 0.16);
+
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-pill: 999px;
+
+  --ease:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-o: cubic-bezier(0.16, 1, 0.30, 1);
+
+  --container: 1180px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --shell: min(100% - (var(--gutter) * 2), var(--container));
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    --bg:        #F5F5F7;
+    --bg-raised: #FFFFFF;
+    --ink:       #1D1D1F;
+    --ink-2:     #56565B;
+    --ink-3:     #6E6E73;
+
+    --accent:         #0066CC;
+    --accent-fill:    #0066CC;
+    --accent-fill-hi: #0057B8;
+    --accent-soft: rgb(0 102 204 / 0.10);
+
+    --glass-fill:
+      linear-gradient(180deg, rgb(255 255 255 / 0.78) 0%, rgb(255 255 255 / 0.58) 42%, rgb(255 255 255 / 0.44) 100%);
+    --glass-brd:    rgb(0 0 0 / 0.08);
+    --glass-brd-hi: rgb(0 0 0 / 0.16);
+    --glass-lift:
+      inset 0 1px 0 rgb(255 255 255 / 0.90),
+      inset 0 -1px 0 rgb(0 0 0 / 0.03),
+      0 18px 50px rgb(0 0 0 / 0.10);
+    --hairline:    rgb(0 0 0 / 0.08);
+    --hairline-hi: rgb(0 0 0 / 0.14);
+  }
+}
+
+/* ---------- base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Ambient field. Fixed, non-interactive, so it never intercepts pointers. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(70rem 46rem at 78% -8%,  rgb(10 132 255 / 0.16), transparent 62%),
+    radial-gradient(52rem 40rem at 4%  34%,  rgb(120 140 175 / 0.10), transparent 62%),
+    radial-gradient(60rem 44rem at 62% 104%, rgb(10 132 255 / 0.07), transparent 62%);
+}
+
+@media (prefers-color-scheme: light) {
+  body::before {
+    background:
+      radial-gradient(70rem 46rem at 78% -8%,  rgb(0 102 204 / 0.11), transparent 62%),
+      radial-gradient(52rem 40rem at 4%  34%,  rgb(120 140 175 / 0.14), transparent 62%),
+      radial-gradient(60rem 44rem at 62% 104%, rgb(0 102 204 / 0.06), transparent 62%);
+  }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.shell { width: var(--shell); margin-inline: auto; }
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+.skip-link {
+  position: fixed; top: 10px; left: 10px; z-index: 200;
+  padding: 10px 16px; border-radius: var(--r-pill);
+  background: var(--bg-raised); color: var(--ink);
+  border: 1px solid var(--hairline-hi);
+  transform: translateY(-160%);
+  transition: transform 0.22s var(--ease-o);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* ---------- glass material ---------- */
+
+.glass {
+  position: relative;
+  isolation: isolate;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-brd);
+  box-shadow: var(--glass-lift);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(120% 80% at 22% 0%, rgb(255 255 255 / 0.18), transparent 58%);
+}
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgb(255 255 255 / 0.05);
+}
+@media (prefers-color-scheme: light) {
+  .glass::before { background: radial-gradient(120% 80% at 22% 0%, rgb(255 255 255 / 0.85), transparent 58%); }
+  .glass::after  { border-color: rgb(255 255 255 / 0.60); }
+}
+
+/* Users who ask for less transparency get an opaque panel, same geometry. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--bg-raised);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .glass::before { display: none; }
+}
+
+/* ==========================================================================
+   Navigation. One row, 64px tall, collapses to a pill once the page moves.
+   ========================================================================== */
+
+/* Taller than the observer's -56px top inset on purpose. A 1px sentinel can
+   never intersect a root whose top edge is pushed down 56px, so nav-lifted
+   would latch on at load and never release. */
+.nav-sentinel {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px; height: 72px;
+  pointer-events: none;
+}
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  transition: padding 0.4s var(--ease-o);
+}
+/* Scroll edge. The pill floats with a transparent strip above it, so without
+   this the page scrolls through that strip and shows as a sliver at y=0.
+   It fades in with the pill, so the hero keeps a clean full-bleed top. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 76px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(to bottom, var(--bg) 30%, rgb(0 0 0 / 0) 100%);
+  transition: opacity 0.44s var(--ease-o);
+}
+body.nav-lifted .nav::before { opacity: 1; }
+
+.nav-inner {
+  width: var(--shell);
+  /* .nav is a flex container, so the pill is a flex item and min-width:auto
+     would override the width above and let its content widen it past the
+     viewport. On a phone that pushed the CV chip off screen. */
+  min-width: 0;
+  margin-inline: auto;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 8px 0 18px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+  transition: all 0.44s var(--ease-o);
+}
+body.nav-lifted .nav-inner {
+  width: min(100% - (var(--gutter) * 2), 880px);
+  background: var(--glass-fill);
+  border-color: var(--glass-brd);
+  box-shadow: var(--glass-lift);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+@media (prefers-reduced-transparency: reduce) {
+  body.nav-lifted .nav-inner {
+    background: var(--bg-raised);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.nav-mark {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.nav-link {
+  position: relative;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  font-size: 0.85rem;
+  font-weight: 450;
+  color: var(--ink-2);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.nav-link:hover { color: var(--ink); background: var(--hairline); }
+.nav-link.active { color: var(--ink); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 2px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.nav-tail { display: flex; align-items: center; gap: 8px; }
+
+.lang-toggle {
+  display: flex;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hairline-hi);
+  background: var(--hairline);
+}
+.lang-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  transition: all 0.24s var(--ease);
+}
+.lang-btn.active { background: var(--ink); color: var(--bg); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  padding: 11px 22px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), background 0.24s var(--ease), border-color 0.24s var(--ease);
+}
+.btn i { font-size: 1.05em; }
+.btn-primary { background: var(--accent-fill); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-fill-hi); }
+.btn-quiet {
+  background: var(--hairline);
+  border-color: var(--hairline-hi);
+  color: var(--ink);
+}
+.btn-quiet:hover { background: var(--hairline-hi); border-color: var(--glass-brd-hi); }
+.btn:active { transform: scale(0.975); }
+.btn-sm { padding: 8px 16px; font-size: 0.82rem; }
+
+/* ==========================================================================
+   Hero. Asymmetric split: type column left, live glass render right.
+   ========================================================================== */
+
+.hero {
+  min-height: 100dvh;
+  display: grid;
+  align-items: center;
+  padding: 96px 0 64px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+.hero-copy { max-width: 34ch; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 14px 6px 12px;
+  margin-bottom: 26px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--glass-brd);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.status i { font-size: 0.9rem; color: var(--accent); }
+
+.hero h1 {
+  font-size: clamp(2.9rem, 7.4vw, 5.4rem);
+  font-weight: 600;
+  letter-spacing: -0.042em;
+  line-height: 0.98;
+  margin-bottom: 20px;
+}
+.hero-role {
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin-bottom: 34px;
+}
+.hero-role b { color: var(--ink); font-weight: 550; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Canvas column. Reserves its box before WebGL boots so nothing reflows. */
+.hero-stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-height: 68vh;
+  min-height: 320px;
+}
+/* A lit pocket behind the canvas. The WebGL object has no bloom pass, so the
+   glow that sells it as a lit object is done here in CSS instead. */
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 42% at 62% 34%, rgb(10 132 255 / 0.20), transparent 72%),
+    radial-gradient(58% 54% at 34% 68%, rgb(120 160 255 / 0.10), transparent 76%);
+  filter: blur(14px);
+}
+.hero-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-md);
+}
+/* Shown when WebGL is unavailable or motion is reduced. */
+.stage-fallback {
+  position: absolute;
+  inset: 12%;
+  border-radius: 34% 66% 58% 42% / 46% 38% 62% 54%;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-brd-hi);
+  box-shadow: var(--glass-lift);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  backdrop-filter: blur(30px) saturate(190%);
+  opacity: 0;
+}
+.hero-stage[data-fallback="on"] .stage-fallback { opacity: 1; }
+.hero-stage[data-fallback="on"] canvas { display: none; }
+
+/* ==========================================================================
+   Section chrome
+   ========================================================================== */
+
+.section { padding: clamp(88px, 11vw, 152px) 0; }
+.section-head { margin-bottom: clamp(40px, 5vw, 64px); max-width: 26ch; }
+.section-head .mono { display: block; margin-bottom: 14px; }
+.section-title {
+  font-size: clamp(1.95rem, 4vw, 3.05rem);
+  font-weight: 600;
+  letter-spacing: -0.036em;
+}
+.rule { height: 1px; background: var(--hairline); border: 0; margin: 0; }
+
+/* ==========================================================================
+   Work. Bento of four, deliberately unequal weight. One cell per project.
+   ========================================================================== */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+.work-card {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: transform 0.5s var(--ease-o), border-color 0.4s var(--ease);
+}
+.work-card:nth-child(1) { grid-column: span 7; }
+.work-card:nth-child(2) { grid-column: span 5; }
+.work-card:nth-child(3) { grid-column: span 5; }
+.work-card:nth-child(4) { grid-column: span 7; }
+.work-card:hover { transform: translateY(-5px); border-color: var(--glass-brd-hi); }
+
+.work-shot {
+  position: relative;
+  overflow: hidden;
+  background: var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.work-card:nth-child(1) .work-shot,
+.work-card:nth-child(4) .work-shot { aspect-ratio: 16 / 9; }
+.work-card:nth-child(2) .work-shot,
+.work-card:nth-child(3) .work-shot { aspect-ratio: 4 / 3; }
+
+.work-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Consistent art direction so mixed sources read as one set. */
+  filter: grayscale(0.82) contrast(1.06) brightness(0.86);
+  transform: scale(1.02);
+  transition: filter 0.6s var(--ease), transform 0.7s var(--ease-o);
+}
+.work-card:hover .work-shot img {
+  filter: grayscale(0.18) contrast(1.04) brightness(0.98);
+  transform: scale(1.055);
+}
+.work-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+}
+.work-kind {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.work-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 24px 24px;
+  flex: 1;
+}
+.work-body h3 { font-size: 1.2rem; letter-spacing: -0.024em; }
+.work-note { font-size: 0.875rem; color: var(--ink-2); line-height: 1.5; }
+.work-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.work-stack span {
+  padding: 3px 9px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--hairline-hi);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-2);
+}
+.work-links {
+  display: flex;
+  gap: 18px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.work-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+}
+.work-links a:hover { color: var(--accent); gap: 9px; }
+.work-links i { font-size: 1.05rem; }
+
+/* ==========================================================================
+   About. Editorial two column: sticky portrait and fact ledger left,
+   statement and timeline right. No cards, grouped by hairlines instead.
+   ========================================================================== */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: clamp(36px, 6vw, 84px);
+  align-items: start;
+}
+.about-aside { position: sticky; top: 96px; display: grid; gap: 26px; }
+.ledger { margin-top: 44px; }
+.portrait {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--glass-brd);
+  box-shadow: var(--glass-lift);
+}
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.ledger { display: grid; }
+.ledger li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-top: 1px solid var(--hairline);
+}
+.ledger li:last-child { border-bottom: 1px solid var(--hairline); }
+.ledger dt, .ledger .k {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ledger .v { font-size: 0.92rem; font-weight: 500; text-align: right; }
+.ledger .v-accent { color: var(--accent); }
+
+.about-lede {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  margin-bottom: 22px;
+  text-wrap: pretty;
+}
+.about-body {
+  font-size: 1rem;
+  color: var(--ink-2);
+  line-height: 1.62;
+  max-width: 58ch;
+  margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   Capability spec sheet. A mono group label per row, skills to its right.
+   No cards: hairlines carry the grouping.
+   ========================================================================== */
+
+.spec { display: grid; }
+.spec-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 24px;
+  padding: 26px 0;
+  border-top: 1px solid var(--hairline);
+}
+.spec-row:last-child { border-bottom: 1px solid var(--hairline); }
+.spec-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+.spec-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 44px;
+}
+.spec-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+}
+.spec-item .name { font-size: 0.94rem; font-weight: 450; }
+.spec-item .dots {
+  flex: 1;
+  height: 1px;
+  margin-bottom: 4px;
+  background: repeating-linear-gradient(90deg, var(--hairline-hi) 0 1.5px, transparent 1.5px 5px);
+}
+.spec-item .lvl {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.spec-item .lvl.is-high { color: var(--accent); }
+
+/* ==========================================================================
+   Process. Four steps on one connected track.
+   ========================================================================== */
+
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.track::before {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline-hi) 12%, var(--hairline-hi) 88%, transparent);
+}
+.step { position: relative; padding-top: 0; }
+.step-dot {
+  position: relative;
+  z-index: 1;
+  width: 42px; height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--glass-brd);
+  background: var(--glass-fill);
+  box-shadow: var(--glass-lift);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+.step-ord {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  display: block;
+  margin-bottom: 8px;
+}
+.step h3 { font-size: 1.02rem; letter-spacing: -0.02em; margin-bottom: 8px; }
+.step p { font-size: 0.85rem; color: var(--ink-2); line-height: 1.5; }
+
+/* ==========================================================================
+   Contact. One full width glass panel.
+   ========================================================================== */
+
+.contact-panel {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(32px, 5vw, 68px);
+  padding: clamp(28px, 4vw, 56px);
+  border-radius: var(--r-md);
+}
+.contact-panel h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.036em;
+  margin-bottom: 16px;
+  max-width: 20ch;
+}
+.contact-lede {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 40ch;
+  margin-bottom: 30px;
+}
+.channels { display: grid; gap: 2px; }
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 2px;
+  border-top: 1px solid var(--hairline);
+  transition: padding-left 0.24s var(--ease);
+}
+.channel:last-child { border-bottom: 1px solid var(--hairline); }
+.channel:hover { padding-left: 8px; }
+.channel i { font-size: 1.15rem; color: var(--ink-2); }
+.channel span { font-size: 0.9rem; font-weight: 450; }
+.channel .arrow { margin-left: auto; color: var(--ink-3); font-size: 1rem; }
+.channel:hover i, .channel:hover .arrow { color: var(--accent); }
+
+.form { display: grid; gap: 12px; align-content: start; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: grid; gap: 6px; }
+.field label {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--hairline-hi);
+  background-color: var(--hairline);
+  /* Form controls inherit neither font nor colour. Without these two the
+     inputs fall back to the UA default and read black-on-dark in dark mode. */
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.field textarea { resize: vertical; min-height: 104px; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+  /* Longhand on purpose: the shorthand would wipe the select's chevron. */
+  background-color: var(--accent-soft);
+}
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+/* The UA select is 4px taller than a text input and draws its own chevron in
+   its own grey, which is the one control on the page that looked unstyled.
+   color-scheme on :root still themes the popup list. */
+.field select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.4 6 6.4 11 1.4' fill='none' stroke='%238A8A92' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 11px 8px;
+}
+.form .btn-primary { justify-self: start; margin-top: 6px; }
+.form-status {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  min-height: 1.2em;
+}
+.form-status[data-state="ok"] { color: var(--accent); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  padding: 34px 0 44px;
+  border-top: 1px solid var(--hairline);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.footer-socials { display: flex; gap: 6px; }
+.footer-socials a {
+  width: 36px; height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hairline-hi);
+  color: var(--ink-2);
+  font-size: 1.1rem;
+  transition: all 0.22s var(--ease);
+}
+.footer-socials a:hover { color: var(--ink); border-color: var(--glass-brd-hi); background: var(--hairline); }
+
+/* ==========================================================================
+   Reveal on enter. Driven by IntersectionObserver, never a scroll listener.
+   ========================================================================== */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s var(--ease-o), transform 0.7s var(--ease-o);
+  transition-delay: var(--d, 0ms);
+}
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-copy { max-width: 38ch; }
+  .hero-stage { max-height: 46vh; order: -1; justify-self: center; width: min(100%, 460px); }
+  .about-grid { grid-template-columns: 1fr; }
+  /* Stacked: the portrait is the only thing in here, so cap it rather than
+     letting a 4/5 image eat a whole viewport. */
+  .about-aside { position: static; justify-items: start; }
+  .portrait { width: min(100%, 300px); }
+  .contact-panel { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .work-card:nth-child(n) { grid-column: span 12; }
+  .spec-row { grid-template-columns: 1fr; gap: 12px; }
+  .track { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+  .track::before { display: none; }
+  /* The links scroll instead of disappearing. Hiding them left a phone with
+     no way to reach a section, and duplicating them into a menu would give
+     main.js two nodes per section to keep in sync. */
+  .nav-links {
+    margin-left: 0;
+    /* min-width:0 is load bearing: a flex item will not shrink below its
+       content width without it, so the row stayed 350px wide and pushed the
+       lang toggle and CV chip out past the pill's right edge. */
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* The fade has to start well before the edge. At 80% the last glyph sits
+       almost fully opaque against the language toggle, which reads as a
+       collision rather than as "there is more, scroll". */
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 62%, rgb(0 0 0 / 0) 97%);
+    mask-image: linear-gradient(to right, #000 0, #000 62%, rgb(0 0 0 / 0) 97%);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  /* The pill has to clip. .nav is fixed, so its overflowing content is not
+     caught by body's overflow-x:hidden and the whole page gained 29px of
+     sideways pan on a phone. Clipping to the pill's own radius also makes the
+     scrolling row terminate where it should. */
+  .nav-inner { overflow: hidden; }
+  .nav-link { white-space: nowrap; }
+  .nav-inner { gap: 10px; }
+  .nav-tail { flex: 0 0 auto; }
+  body.nav-lifted .nav-inner { width: min(100% - (var(--gutter) * 2), 620px); }
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 92px 0 56px; }
+  .hero-stage { max-height: 38vh; min-height: 260px; }
+  /* The aura bleeds inset:-14% past the stage on every side. Once the stage is
+     as wide as the content column that bleed lands outside the viewport, and it
+     is not caught by body's overflow-x:hidden -- overflow on body does not
+     propagate to the viewport, only overflow on html does. So the page gained
+     29px of sideways pan. Drop the horizontal bleed and keep the vertical. */
+  .hero-stage::before { inset: -14% 0; }
+  .spec-items { grid-template-columns: 1fr; }
+  .track { grid-template-columns: 1fr; gap: 28px; }
+  .about-aside { grid-template-columns: 1fr; }
+  .portrait { max-width: 260px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  /* Mark goes first on a phone: the section links need the room more. */
+  .nav-mark { display: none; }
+  /* The CV chip goes next. Toggle plus chip took 185px of a 350px pill and left
+     the five section links a 158px window -- two and a half links, which looks
+     accidental. CV is still one tap away from the About block. */
+  .nav-tail .btn { display: none; }
+}
+
+/* ==========================================================================
+   Reduced motion. Content stays visible; only movement is removed.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .work-card:hover { transform: none; }
+  .work-shot img { transform: none; filter: grayscale(0.2) contrast(1.04); }
+  .work-card:hover .work-shot img { transform: none; }
+}
+
+/* ==========================================================================
+   Print
+   ========================================================================== */
+
+@media print {
+  .nav, .hero-stage, .form, .footer-socials { display: none !important; }
+  body { background: #FFF; color: #000; }
+  body::before, body::after { display: none !important; }
+  .glass, .contact-panel {
+    background: transparent !important;
+    border: 1px solid #CCC !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .section { padding: 24px 0 !important; }
+  .work-card { break-inside: avoid; }
+}

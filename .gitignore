@@ -1,0 +1,57 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate.log
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The Python Packaging Index
+dist/
+build/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.flutter-plugins
+**/ios/Flutter/.flutter-plugins-dependencies
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Web related
+.web/
+
+# Symbol files
+*.pdb
+
+# Never publish these from this repo.
+# The CV PDF carries a phone number and address. WARNING: this line alone does
+# nothing today -- the file is already tracked (since a7e0898) and ignore rules
+# never apply to tracked files. It has to be untracked first:
+#   git rm --cached assets/Pham-Quang-Dung-CV.pdf
+# and the blob still has to be purged from history with git filter-repo, the
+# same purge Landing-Bio needs. No page in this repo links the file.
+assets/Pham-Quang-Dung-CV.pdf
+
+# Design references pulled off other people's work. Fine to look at locally,
+# not ours to redistribute in a public repo.
+assets/dribbble_menu.png
+assets/reference_menu.png
+
+# Bản gốc từ newversion.zip, giữ lại để đối chiếu khi làm việc.
+# Không publish: bản lưu bền nằm ở E:\PROJECT\_private\newversion.zip, ngoài repo.
+legacy_web_backup/
