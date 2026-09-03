@@ -1,30 +1,439 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>103_PU | Phạm Quang Dũng</title>
-<meta name="description" content="Portfolio của Phạm Quang Dũng (103_PU) - UI/UX Designer và Fullstack Developer." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phạm Quang Dũng - UI/UX Designer &amp; Fullstack Developer</title>
+  <meta name="description" content="Portfolio của Phạm Quang Dũng. UI/UX Designer và Fullstack Developer, tự thiết kế và triển khai hệ thống production.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0B0B0F" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Phạm Quang Dũng - UI/UX Designer &amp; Fullstack Developer">
+  <meta property="og:description" content="Thiết kế và triển khai hệ thống production, từ Figma đến deploy.">
+  <meta property="og:image" content="assets/avatar.jpg">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<a class="skip-link" href="#main" data-i18n="skip">Bỏ qua nội dung phụ</a>
-<header class="site-header"><div class="container header-bar glass"><a class="brand-mark" href="#main" aria-label="103_PU home">PU</a><nav class="top-nav" aria-label="Điều hướng chính"><a href="#services" data-i18n="nav.skills">Kỹ năng</a><a href="#work" data-i18n="nav.projects">Dự án</a><a href="#blog" data-i18n="nav.highlights">Điểm mạnh</a><a href="#contact" data-i18n="nav.contact">Liên hệ</a><div class="lang-menu"><button class="lang-trigger" id="langTrigger" type="button"><span class="lang-trigger-label" data-i18n="nav.language">Ngôn ngữ</span><span class="lang-current" id="langCurrent">VI</span></button><div class="lang-dropdown" id="langDropdown"><button type="button" class="lang-option is-active" data-lang="vi" data-i18n="lang.vi">Tiếng Việt</button><button type="button" class="lang-option" data-lang="en" data-i18n="lang.en">English</button></div></div></nav><a class="pill-button icon-button" href="assets/Pham-Quang-Dung-CV.pdf" target="_blank" rel="noreferrer"><span class="icon-badge">CV</span><span data-i18n="cta.viewCv">Xem CV</span></a></div></header>
-<main id="main">
-<section class="hero section section-light"><div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="container hero-grid"><div class="hero-copy reveal-flow"><span class="eyebrow" data-i18n="hero.badge">Đang sẵn sàng nhận việc</span><h1>103_PU,<br>Phạm Quang Dũng</h1><p data-i18n="hero.desc">UI/UX Designer và Fullstack Developer có thể tự triển khai hệ thống production từ ý tưởng đến deploy. Mạnh về design system, workflow AI-assisted và tư duy kỹ thuật thực chiến.</p><div class="hero-actions"><a class="primary-button icon-button" href="#work"><span class="icon-badge">↓</span><span data-i18n="cta.viewProjects">Xem dự án</span></a><a class="glass-link icon-button" href="assets/Pham-Quang-Dung-CV.pdf" target="_blank" rel="noreferrer"><span class="icon-badge">CV</span><span data-i18n="cta.openCv">Mở CV</span></a></div><div class="quick-links"><a class="mini-action icon-platform" href="https://github.com/103PU" target="_blank" rel="noreferrer" data-icon-name="github"><span class="icon-badge icon-fallback">GH</span><span data-i18n="link.github">GitHub</span></a><a class="mini-action icon-platform" href="mailto:dungbd2005@gmail.com" data-icon-name="email"><span class="icon-badge icon-fallback">@</span><span data-i18n="link.email">Email</span></a><a class="mini-action icon-platform" href="https://discord.com/invite/k3yUgsYVcB" target="_blank" rel="noreferrer" data-icon-name="discord"><span class="icon-badge icon-fallback">DC</span><span data-i18n="link.discord">Discord</span></a></div></div><div class="hero-visual reveal-flow"><div class="hero-blob"></div><div class="portrait-glass"><img src="assets/avatar.jpg" alt="Ảnh chân dung Phạm Quang Dũng" /></div><div class="hero-note note-left glass" data-i18n="hero.location">TP. Hồ Chí Minh, Việt Nam</div><div class="hero-note note-right glass" data-i18n="hero.delivery">Solo delivery A-Z</div></div></div></section>
-<section id="services" class="section services-shell"><div class="container"><div class="section-head split-head reveal-flow"><h2 data-i18n="skills.title">Kỹ năng lõi</h2><a class="pill-button pill-button--light icon-button icon-platform" href="mailto:dungbd2005@gmail.com" data-icon-name="email"><span class="icon-badge icon-fallback">@</span><span data-i18n="link.email">Email</span></a></div><div class="services-grid"><article class="service-card service-card--wide glass reveal-flow"><div class="service-copy"><span class="eyebrow" data-i18n="skills.design.badge">Design</span><h3 data-i18n="skills.design.title">Figma, design system, wireframe, prototype</h3><p data-i18n="skills.design.desc">Thành thạo Figma, design system và wireframing. Có tư duy hệ thống, biết biến pattern thành sản phẩm dễ mở rộng.</p></div><div class="mini-screen-row"><div class="mini-screen"></div><div class="mini-screen"></div><div class="mini-screen"></div></div></article><article class="service-card glass reveal-flow"><span class="eyebrow" data-i18n="skills.frontend.badge">Frontend</span><h3 data-i18n="skills.frontend.title">HTML, CSS, React, TypeScript, Tailwind</h3><p data-i18n="skills.frontend.desc">Xây UI responsive, dễ maintain, tôn trọng accessibility, performance và constraint thật của dev.</p></article><article class="service-card glass reveal-flow"><span class="eyebrow" data-i18n="skills.process.badge">Process</span><h3 data-i18n="skills.process.title">Git, Agile, WCAG, AI-assisted workflow</h3><p data-i18n="skills.process.desc">Đi được full cycle: design, code, deploy, QA và cải tiến qua feedback có cấu trúc.</p></article></div></div></section>
-<section class="section experience-section"><div class="container narrow"><div class="section-head center-head reveal-flow"><h2 data-i18n="snapshot.title">Hồ sơ nhanh</h2><p data-i18n="snapshot.desc">Những điểm chính được chuyển từ portfolio/CV cũ sang giao diện mới.</p></div><div class="timeline"><article class="timeline-item timeline-item--left glass reveal-flow"><span class="timeline-year" data-i18n="snapshot.profile.year">Profile</span><h3 data-i18n="snapshot.profile.title">Fresher Designer-Developer</h3><p data-i18n="snapshot.profile.desc">Có kinh nghiệm tự xây hệ thống production từ concept, UI, logic đến deployment.</p></article><article class="timeline-item timeline-item--right glass reveal-flow"><span class="timeline-year" data-i18n="snapshot.strength.year">Strength</span><h3 data-i18n="snapshot.strength.title">Design + Engineering</h3><p data-i18n="snapshot.strength.desc">Kết nối UI/UX với frontend/fullstack để giảm ma sát giữa thiết kế và triển khai.</p></article><article class="timeline-item timeline-item--left glass reveal-flow"><span class="timeline-year" data-i18n="snapshot.location.year">Location</span><h3 data-i18n="snapshot.location.title">TP. Hồ Chí Minh, Việt Nam</h3><p data-i18n="snapshot.location.desc">Sẵn sàng cho freelance hoặc full-time. Cách nhanh nhất để liên hệ là email.</p></article><article class="timeline-item timeline-item--right glass reveal-flow"><span class="timeline-year" data-i18n="snapshot.metrics.year">Metrics</span><h3 data-i18n="snapshot.metrics.title">03 core projects, GPA 3.43</h3><p data-i18n="snapshot.metrics.desc">Tư duy solo delivery, từng làm product system, internal tool và AI-assisted flow.</p></article></div></div></section>
-<section class="section why-section"><div class="container why-grid"><div class="why-visual reveal-flow"><div class="portrait-frame glass"><img src="assets/avatar.jpg" alt="Phạm Quang Dũng" /></div></div><div class="why-copy reveal-flow"><span class="eyebrow" data-i18n="about.badge">Về tôi</span><h2 data-i18n="about.title">Thiết kế tôn trọng cả người dùng lẫn kỹ sư.</h2><p data-i18n="about.desc">Tôi thiết kế theo cách sản phẩm thật có thể chạy được: UI có chủ đích, dễ ship, giữ accessibility và scale bằng token, component, pattern thay vì pixel rời rạc.</p><div class="stats-grid"><div class="stat-card glass"><strong>20+</strong><span data-i18n="stats.shipped">Dự án đã ship</span></div><div class="stat-card glass"><strong>5</strong><span data-i18n="stats.years">Năm kinh nghiệm</span></div><div class="stat-card glass"><strong>12+</strong><span data-i18n="stats.clients">Khách hài lòng</span></div><div class="stat-card glass"><strong>3.43</strong><span data-i18n="stats.gpa">GPA hiện tại</span></div></div></div></div></section>
-<section id="work" class="section portfolio-section"><div class="container"><div class="section-head split-head reveal-flow"><div><span class="eyebrow" data-i18n="projects.badge">Dự án nổi bật</span><h2 data-i18n="projects.title">Dự án thực tế từ portfolio và CV cũ</h2></div><a class="pill-button icon-button icon-platform" href="https://github.com/103PU" target="_blank" rel="noreferrer" data-icon-name="github"><span class="icon-badge icon-fallback">GH</span><span data-i18n="link.github">GitHub</span></a></div><div class="portfolio-grid"><article class="project-card glass reveal-flow"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Preview Key License Dashboard" /><div class="project-body"><div class="work-tags"><span>Cloudflare</span><span>D1</span><span>Figma</span></div><h3>Key License Dashboard</h3><p data-i18n="projects.kld.desc">Admin portal quản lý license: phát key, tracking thiết bị, risk detection và analytics.</p><div class="project-actions"><a class="mini-action" href="https://keylicensedashboard.dungbd2005.workers.dev/" target="_blank" rel="noreferrer"><span class="icon-badge">↗</span><span data-i18n="link.live">Live</span></a><a class="mini-action icon-platform" href="https://github.com/103PU" target="_blank" rel="noreferrer" data-icon-name="github"><span class="icon-badge icon-fallback">GH</span><span data-i18n="link.github">GitHub</span></a></div></div></article><article class="project-card glass reveal-flow"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Preview Valorant Tweaks" /><div class="project-body"><div class="work-tags"><span>C#</span><span>WPF</span><span>PowerShell</span></div><h3>Valorant Tweaks</h3><p data-i18n="projects.vt.desc">Windows performance tool cho Valorant: optimizer, DNS switcher, GPU tweaks, Riot-inspired UI.</p><div class="project-actions"><a class="mini-action icon-platform" href="https://github.com/103PU" target="_blank" rel="noreferrer" data-icon-name="github"><span class="icon-badge icon-fallback">GH</span><span data-i18n="link.github">GitHub</span></a><a class="mini-action icon-platform" href="mailto:dungbd2005@gmail.com?subject=Valorant%20Tweaks" data-icon-name="email"><span class="icon-badge icon-fallback">@</span><span data-i18n="link.ask">Hỏi thêm</span></a></div></div></article><article class="project-card glass reveal-flow"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Preview AAO Assistance" /><div class="project-body"><div class="work-tags"><span>Next.js</span><span>AI</span><span>Extension</span></div><h3>AAO Assistance</h3><p data-i18n="projects.aao.desc">AI academic advisor cho sinh viên EIU với roadmap học tập, recommendation và feedback engine.</p><div class="project-actions"><a class="mini-action icon-platform" href="https://github.com/CeatursHarmginton/eiu-aao-assistant" target="_blank" rel="noreferrer" data-icon-name="github"><span class="icon-badge icon-fallback">GH</span><span data-i18n="link.github">GitHub</span></a><a class="mini-action icon-platform" href="mailto:dungbd2005@gmail.com?subject=AAO%20Assistance" data-icon-name="email"><span class="icon-badge icon-fallback">@</span><span data-i18n="link.contact">Liên hệ</span></a></div></div></article><article class="project-card glass reveal-flow"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Preview Portfolio System" /><div class="project-body"><div class="work-tags"><span>HTML</span><span>CSS</span><span>Vanilla JS</span></div><h3>Portfolio System</h3><p data-i18n="projects.portfolio.desc">Giao diện semantic HTML, CSS token, glass UI, scroll animation và zero dependency.</p><div class="project-actions"><a class="mini-action" href="#main"><span class="icon-badge">↑</span><span data-i18n="link.thisPage">Trang này</span></a><a class="mini-action icon-platform" href="assets/Pham-Quang-Dung-CV.pdf" target="_blank" rel="noreferrer" data-icon-name="cv"><span class="icon-badge icon-fallback">CV</span><span data-i18n="cta.cv">CV</span></a></div></div></article></div></div></section>
-<section class="section testimonial-section"><div class="container"><div class="section-head center-head reveal-flow"><span class="eyebrow" data-i18n="delivery.badge">Phong cách làm việc</span><h2 data-i18n="delivery.title">Cách tôi biến ý tưởng thành sản phẩm</h2></div><div class="testimonial-grid"><article class="testimonial-card glass reveal-flow"><p data-i18n="delivery.kld">Cloudflare Workers, D1 Database, JavaScript và Figma cho admin system custom từ đầu.</p><div><strong>Key License Dashboard</strong><span data-i18n="delivery.kld.meta">Full-stack + UI/UX</span></div></article><article class="testimonial-card glass reveal-flow"><p data-i18n="delivery.vt">C#, .NET, WPF, PowerShell và Figma để tạo desktop tool tối ưu hiệu năng.</p><div><strong>Valorant Tweaks</strong><span data-i18n="delivery.vt.meta">Desktop app + product design</span></div></article><article class="testimonial-card glass reveal-flow"><p data-i18n="delivery.aao">Next.js, AI integration, Figma và extension architecture cho educational assistant flow.</p><div><strong>AAO Assistance</strong><span data-i18n="delivery.aao.meta">Fullstack + AI product flow</span></div></article></div></div></section>
-<section class="section idea-section"><div class="container idea-shell glass reveal-flow"><div><span class="eyebrow" data-i18n="contact.badge">Liên hệ</span><h2 data-i18n="contact.title">Cùng build một sản phẩm nhìn đã mắt và chạy thật tốt.</h2></div><a class="primary-button icon-button icon-platform" href="mailto:dungbd2005@gmail.com" data-icon-name="email"><span class="icon-badge icon-fallback">@</span><span data-i18n="contact.cta">Email ngay</span></a></div></section>
-<section id="blog" class="section blog-section"><div class="container"><div class="section-head split-head reveal-flow"><div><span class="eyebrow" data-i18n="highlights.badge">Điểm mạnh</span><h2 data-i18n="highlights.title">Những thứ tôi tập trung phát triển</h2></div><a class="pill-button icon-button icon-platform" href="assets/Pham-Quang-Dung-CV.pdf" target="_blank" rel="noreferrer" data-icon-name="cv"><span class="icon-badge icon-fallback">CV</span><span data-i18n="cta.pdfCv">PDF CV</span></a></div><div class="blog-grid"><article class="blog-card glass reveal-flow"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Design system" /><div class="blog-body"><span data-i18n="label.design">Thiết kế</span><h3 data-i18n="highlights.design">Figma expert, design system tốt, wireframe rõ ràng</h3></div></article><article class="blog-card blog-card--featured glass reveal-flow"><img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Workflow kỹ thuật" /><div class="blog-body"><span data-i18n="label.workflow">Quy trình</span><h3 data-i18n="highlights.workflow">AI-assisted development, Git, Agile, accessibility và delivery end-to-end</h3></div></article><article class="blog-card glass reveal-flow"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Frontend" /><div class="blog-body"><span data-i18n="label.frontend">Frontend</span><h3 data-i18n="highlights.frontend">HTML, CSS, React, TypeScript, Tailwind và responsive UI</h3></div></article></div></div></section>
-</main>
-<footer id="contact" class="site-footer"><div class="container footer-shell"><div><span class="eyebrow" data-i18n="footer.badge">Kết nối</span><h2 data-i18n="footer.title">Liên hệ nhanh cho freelance, product hoặc cơ hội full-time.</h2></div><div class="footer-links"><a class="mini-action icon-platform" href="mailto:dungbd2005@gmail.com" data-icon-name="email"><span class="icon-badge icon-fallback">@</span><span data-i18n="link.email">Email</span></a><a class="mini-action icon-platform" href="https://github.com/103PU" target="_blank" rel="noreferrer" data-icon-name="github"><span class="icon-badge icon-fallback">GH</span><span data-i18n="link.github">GitHub</span></a><a class="mini-action icon-platform" href="https://discord.com/invite/k3yUgsYVcB" target="_blank" rel="noreferrer" data-icon-name="discord"><span class="icon-badge icon-fallback">DC</span><span data-i18n="link.discord">Discord</span></a><a class="mini-action icon-platform" href="assets/Pham-Quang-Dung-CV.pdf" target="_blank" rel="noreferrer" data-icon-name="cv"><span class="icon-badge icon-fallback">CV</span><span data-i18n="cta.pdfCv">PDF CV</span></a></div></div></footer>
-<script src="script.js"></script>
+  <a class="skip-link" href="#main" data-en="Skip to main content" data-vi="Tới nội dung chính">Tới nội dung chính</a>
+  <span class="nav-sentinel" aria-hidden="true"></span>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-mark" href="#hero">PU.</a>
+
+      <ul class="nav-links">
+        <li><a class="nav-link" href="#work"    data-en="Work"    data-vi="Dự án">Dự án</a></li>
+        <li><a class="nav-link" href="#about"   data-en="About"   data-vi="Về tôi">Về tôi</a></li>
+        <li><a class="nav-link" href="#skills"  data-en="Skills"  data-vi="Kỹ năng">Kỹ năng</a></li>
+        <li><a class="nav-link" href="#process" data-en="Process" data-vi="Quy trình">Quy trình</a></li>
+        <li><a class="nav-link" href="#contact" data-en="Contact" data-vi="Liên hệ">Liên hệ</a></li>
+      </ul>
+
+      <div class="nav-tail">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button class="lang-btn" type="button" data-lang="vi">VI</button>
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
+        <a class="btn btn-quiet btn-sm" href="cv.html">
+          <i class="ph ph-file-text" aria-hidden="true"></i>
+          <span>CV</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============ Hero: type column left, live glass render right ============ -->
+    <section class="hero" id="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <span class="status">
+            <i class="ph ph-briefcase" aria-hidden="true"></i>
+            <span data-en="Open to work" data-vi="Sẵn sàng nhận việc">Sẵn sàng nhận việc</span>
+          </span>
+
+          <h1>Phạm Quang Dũng</h1>
+
+          <p class="hero-role"
+             data-en="UI/UX Designer and Fullstack Developer. I ship <b>production systems</b>, not mockups."
+             data-vi="UI/UX Designer và Fullstack Developer. Tôi làm ra <b>hệ thống chạy thật</b>, không dừng ở mockup.">UI/UX Designer và Fullstack Developer. Tôi làm ra <b>hệ thống chạy thật</b>, không dừng ở mockup.</p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#work">
+              <span data-en="See the work" data-vi="Xem dự án">Xem dự án</span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-quiet" href="#contact">
+              <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+              <span data-en="Get in touch" data-vi="Liên hệ tôi">Liên hệ tôi</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- WebGL glass form, tracks the cursor. Falls back to a CSS shape. -->
+        <div class="hero-stage" id="stage" aria-hidden="true">
+          <div class="stage-fallback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Work: bento of four, deliberately unequal weight ============ -->
+    <section class="section" id="work">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <span class="mono" data-en="Selected work" data-vi="Dự án nổi bật">Dự án nổi bật</span>
+          <h2 class="section-title" data-en="Four systems, shipped." data-vi="Bốn hệ thống, đã chạy thật.">Bốn hệ thống, đã chạy thật.</h2>
+        </header>
+
+        <div class="work-grid">
+
+          <article class="work-card glass" data-reveal>
+            <div class="work-shot">
+              <!-- Placeholder art. Swap for a real capture of the dashboard. -->
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                   alt="Key License Dashboard" loading="lazy" decoding="async">
+            </div>
+            <div class="work-body">
+              <div class="work-head">
+                <h3>Key License Dashboard</h3>
+                <span class="work-kind">Web App</span>
+              </div>
+              <p class="work-note" data-en="License issuance, device tracking, risk signals." data-vi="Phát key, tracking thiết bị, tín hiệu rủi ro.">Phát key, tracking thiết bị, tín hiệu rủi ro.</p>
+              <div class="work-stack"><span>Cloudflare</span><span>D1</span><span>Figma</span></div>
+              <div class="work-links">
+                <a href="https://keylicensedashboard.dungbd2005.workers.dev/" target="_blank" rel="noopener">
+                  <span data-en="Live site" data-vi="Xem live">Xem live</span>
+                  <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card glass" data-reveal style="--d:80ms">
+            <div class="work-shot">
+              <!-- Placeholder art. Swap for a real capture of the app window. -->
+              <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Valorant Tweaks" loading="lazy" decoding="async">
+            </div>
+            <div class="work-body">
+              <div class="work-head">
+                <h3>Valorant Tweaks</h3>
+                <span class="work-kind">Desktop</span>
+              </div>
+              <p class="work-note" data-en="Windows optimizer, DNS switch, GPU tuning." data-vi="Tối ưu Windows, đổi DNS, tinh chỉnh GPU.">Tối ưu Windows, đổi DNS, tinh chỉnh GPU.</p>
+              <div class="work-stack"><span>C#</span><span>WPF</span><span>PowerShell</span></div>
+              <div class="work-links">
+                <a href="mailto:dungbd2005@gmail.com?subject=Valorant%20Tweaks">
+                  <span data-en="Request a demo" data-vi="Xin bản demo">Xin bản demo</span>
+                  <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card glass" data-reveal>
+            <div class="work-shot">
+              <!-- Placeholder art. Swap for a real capture of the advisor UI. -->
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="AAO Assistance" loading="lazy" decoding="async">
+            </div>
+            <div class="work-body">
+              <div class="work-head">
+                <h3>AAO Assistance</h3>
+                <span class="work-kind">AI / Edu</span>
+              </div>
+              <p class="work-note" data-en="Study roadmaps and course advice for EIU." data-vi="Lộ trình học và gợi ý môn cho sinh viên EIU.">Lộ trình học và gợi ý môn cho sinh viên EIU.</p>
+              <div class="work-stack"><span>Next.js</span><span>AI</span><span>Extension</span></div>
+              <div class="work-links">
+                <a href="https://github.com/CeatursHarmginton/eiu-aao-assistant" target="_blank" rel="noopener">
+                  <span data-en="Source" data-vi="Mã nguồn">Mã nguồn</span>
+                  <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card glass" data-reveal style="--d:80ms">
+            <div class="work-shot">
+              <!-- Placeholder art. Swap for a real capture of the bio page. -->
+              <img src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                   alt="Landing Bio" loading="lazy" decoding="async">
+            </div>
+            <div class="work-body">
+              <div class="work-head">
+                <h3>Landing Bio</h3>
+                <span class="work-kind">Landing</span>
+              </div>
+              <p class="work-note" data-en="One page bio, zero framework, live on Vercel." data-vi="Trang bio một màn, không framework, chạy trên Vercel.">Trang bio một màn, không framework, chạy trên Vercel.</p>
+              <div class="work-stack"><span>HTML</span><span>CSS</span><span>Vanilla JS</span></div>
+              <div class="work-links">
+                <a href="https://103punewbio.vercel.app" target="_blank" rel="noopener">
+                  <span data-en="Live site" data-vi="Xem live">Xem live</span>
+                  <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/103PU" target="_blank" rel="noopener">
+                  <span>GitHub</span>
+                  <i class="ph ph-github-logo" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ About: editorial two column, hairlines instead of cards ============ -->
+    <section class="section" id="about">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <h2 class="section-title" data-en="About" data-vi="Về tôi">Về tôi</h2>
+        </header>
+
+        <div class="about-grid">
+          <aside class="about-aside" data-reveal>
+            <figure class="portrait">
+              <img src="assets/avatar.jpg" alt="Phạm Quang Dũng" loading="lazy" decoding="async">
+            </figure>
+          </aside>
+
+          <div data-reveal style="--d:100ms">
+            <p class="about-lede"
+               data-en="Design that respects both the user and the engineer."
+               data-vi="Thiết kế tôn trọng cả người dùng lẫn kỹ sư.">Thiết kế tôn trọng cả người dùng lẫn kỹ sư.</p>
+
+            <p class="about-body"
+               data-en="I work from Figma to deploy. Intentional detail, structure a team can pick up, builds that survive real traffic."
+               data-vi="Tôi làm từ Figma tới deploy. Chi tiết có chủ đích, cấu trúc cả nhóm đọc được, build chịu được tải thật.">Tôi làm từ Figma tới deploy. Chi tiết có chủ đích, cấu trúc cả nhóm đọc được, build chịu được tải thật.</p>
+
+            <a class="btn btn-quiet" href="cv.html">
+              <i class="ph ph-file-text" aria-hidden="true"></i>
+              <span data-en="Full CV" data-vi="Xem CV đầy đủ">Xem CV đầy đủ</span>
+            </a>
+
+            <!-- Ledger sits in this column, not under the portrait: the portrait
+                 column is sticky, and a sticky column has to stay the short one. -->
+            <ul class="ledger">
+              <li>
+                <span class="k" data-en="School" data-vi="Trường">Trường</span>
+                <span class="v">EIU College</span>
+              </li>
+              <li>
+                <span class="k" data-en="Since" data-vi="Bắt đầu">Bắt đầu</span>
+                <span class="v">T9 / 2024</span>
+              </li>
+              <li>
+                <span class="k" data-en="Projects" data-vi="Dự án">Dự án</span>
+                <span class="v">04</span>
+              </li>
+              <li>
+                <span class="k" data-en="Status" data-vi="Trạng thái">Trạng thái</span>
+                <span class="v v-accent" data-en="Open to work" data-vi="Sẵn sàng">Sẵn sàng</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Capabilities: spec sheet, no cards ============ -->
+    <section class="section" id="skills">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <h2 class="section-title" data-en="Capabilities" data-vi="Năng lực">Năng lực</h2>
+        </header>
+
+        <div class="spec">
+
+          <div class="spec-row" data-reveal>
+            <div class="spec-label" data-en="Design" data-vi="Thiết kế">Thiết kế</div>
+            <div class="spec-items">
+              <div class="spec-item"><span class="name">Figma UI/UX</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">Design System</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">Wireframing</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">Prototyping</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+            </div>
+          </div>
+
+          <div class="spec-row" data-reveal>
+            <div class="spec-label">Frontend</div>
+            <div class="spec-items">
+              <div class="spec-item"><span class="name">HTML &amp; CSS</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">JavaScript</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">TailwindCSS</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">React / TS</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+            </div>
+          </div>
+
+          <div class="spec-row" data-reveal>
+            <div class="spec-label">Backend</div>
+            <div class="spec-items">
+              <div class="spec-item"><span class="name">Node.js</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+              <div class="spec-item"><span class="name">CF Workers</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+              <div class="spec-item"><span class="name">D1 / SQL</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+              <div class="spec-item"><span class="name">REST APIs</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+            </div>
+          </div>
+
+          <div class="spec-row" data-reveal>
+            <div class="spec-label" data-en="AI &amp; Tools" data-vi="AI &amp; Công cụ">AI &amp; Công cụ</div>
+            <div class="spec-items">
+              <div class="spec-item"><span class="name">AI-Assisted Dev</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">Git / GitHub</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">Figma DevMode</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name">Agile / Scrum</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+            </div>
+          </div>
+
+          <div class="spec-row" data-reveal>
+            <div class="spec-label" data-en="Soft skills" data-vi="Kỹ năng mềm">Kỹ năng mềm</div>
+            <div class="spec-items">
+              <div class="spec-item"><span class="name" data-en="Problem solving" data-vi="Giải quyết vấn đề">Giải quyết vấn đề</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name" data-en="Fast learning" data-vi="Tự học nhanh">Tự học nhanh</span><span class="dots"></span><span class="lvl is-high" data-en="Expert" data-vi="Thành thạo">Thành thạo</span></div>
+              <div class="spec-item"><span class="name" data-en="Communication" data-vi="Giao tiếp">Giao tiếp</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+              <div class="spec-item"><span class="name" data-en="Collaboration" data-vi="Hợp tác">Hợp tác</span><span class="dots"></span><span class="lvl" data-en="Proficient" data-vi="Khá">Khá</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Process: four steps on one track ============ -->
+    <section class="section" id="process">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <h2 class="section-title" data-en="How I work" data-vi="Cách tôi làm việc">Cách tôi làm việc</h2>
+        </header>
+
+        <div class="track">
+          <div class="step" data-reveal>
+            <div class="step-dot"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></div>
+            <span class="step-ord">01</span>
+            <h3 data-en="Research and wireframe" data-vi="Nghiên cứu &amp; khung sườn">Nghiên cứu &amp; khung sườn</h3>
+            <p data-en="Requirements, user stories, layout in Figma." data-vi="Yêu cầu, user story, dựng khung trong Figma.">Yêu cầu, user story, dựng khung trong Figma.</p>
+          </div>
+
+          <div class="step" data-reveal style="--d:70ms">
+            <div class="step-dot"><i class="ph ph-pen-nib" aria-hidden="true"></i></div>
+            <span class="step-ord">02</span>
+            <h3 data-en="High fidelity UI" data-vi="Giao diện chi tiết">Giao diện chi tiết</h3>
+            <p data-en="Glass layers, type scale, shadow and colour system." data-vi="Lớp kính, thang chữ, hệ đổ bóng và màu.">Lớp kính, thang chữ, hệ đổ bóng và màu.</p>
+          </div>
+
+          <div class="step" data-reveal style="--d:140ms">
+            <div class="step-dot"><i class="ph ph-code" aria-hidden="true"></i></div>
+            <span class="step-ord">03</span>
+            <h3 data-en="Frontend build" data-vi="Lập trình frontend">Lập trình frontend</h3>
+            <p data-en="Semantic markup, fast CSS, motion with intent." data-vi="Markup ngữ nghĩa, CSS nhanh, chuyển động có chủ đích.">Markup ngữ nghĩa, CSS nhanh, chuyển động có chủ đích.</p>
+          </div>
+
+          <div class="step" data-reveal style="--d:210ms">
+            <div class="step-dot"><i class="ph ph-rocket-launch" aria-hidden="true"></i></div>
+            <span class="step-ord">04</span>
+            <h3 data-en="QA and deploy" data-vi="Kiểm thử &amp; deploy">Kiểm thử &amp; deploy</h3>
+            <p data-en="Viewport sweep, accessibility pass, then ship." data-vi="Rà nhiều kích thước màn, kiểm tra accessibility, rồi ship.">Rà nhiều kích thước màn, kiểm tra accessibility, rồi ship.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact: one glass panel ============ -->
+    <section class="section" id="contact">
+      <div class="shell">
+        <div class="contact-panel glass" data-reveal>
+          <div>
+            <h2 data-en="Let's build something." data-vi="Cùng làm một thứ gì đó.">Cùng làm một thứ gì đó.</h2>
+            <p class="contact-lede"
+               data-en="Freelance, collaboration, or a full time role. Pick a channel."
+               data-vi="Freelance, hợp tác dự án, hoặc công việc full time. Chọn một kênh.">Freelance, hợp tác dự án, hoặc công việc full time. Chọn một kênh.</p>
+
+            <div class="channels">
+              <a class="channel" href="mailto:dungbd2005@gmail.com">
+                <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+                <span>dungbd2005@gmail.com</span>
+                <i class="ph ph-arrow-up-right arrow" aria-hidden="true"></i>
+              </a>
+              <a class="channel" href="https://github.com/103PU" target="_blank" rel="noopener">
+                <i class="ph ph-github-logo" aria-hidden="true"></i>
+                <span>github.com/103PU</span>
+                <i class="ph ph-arrow-up-right arrow" aria-hidden="true"></i>
+              </a>
+              <a class="channel" href="https://discord.com/invite/k3yUgsYVcB" target="_blank" rel="noopener">
+                <i class="ph ph-discord-logo" aria-hidden="true"></i>
+                <span data-en="Discord server" data-vi="Server Discord">Server Discord</span>
+                <i class="ph ph-arrow-up-right arrow" aria-hidden="true"></i>
+              </a>
+              <a class="channel" href="cv.html">
+                <i class="ph ph-file-text" aria-hidden="true"></i>
+                <span data-en="Curriculum vitae" data-vi="Hồ sơ CV">Hồ sơ CV</span>
+                <i class="ph ph-arrow-up-right arrow" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- No server behind this page, so the form composes a mail draft locally. -->
+          <form class="form" id="brief" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name" data-en="Name" data-vi="Họ tên">Họ tên</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80">
+              </div>
+              <div class="field">
+                <label for="f-mail" data-en="Email" data-vi="Email">Email</label>
+                <input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="120">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-kind" data-en="Project type" data-vi="Loại dự án">Loại dự án</label>
+              <select id="f-kind" name="kind">
+                <option data-en="Web development" data-vi="Lập trình website">Lập trình website</option>
+                <option data-en="UI/UX design" data-vi="Thiết kế UI/UX">Thiết kế UI/UX</option>
+                <option data-en="Desktop app" data-vi="Ứng dụng desktop">Ứng dụng desktop</option>
+                <option data-en="Other" data-vi="Khác">Khác</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="f-msg" data-en="Message" data-vi="Lời nhắn">Lời nhắn</label>
+              <textarea id="f-msg" name="message" required maxlength="1200"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+              <span data-en="Open mail draft" data-vi="Mở email soạn sẵn">Mở email soạn sẵn</span>
+            </button>
+            <p class="form-status" id="brief-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <span class="mono">© 2026 Phạm Quang Dũng</span>
+      <div class="footer-socials">
+        <a href="mailto:dungbd2005@gmail.com" aria-label="Email"><i class="ph ph-envelope-simple" aria-hidden="true"></i></a>
+        <a href="https://github.com/103PU" target="_blank" rel="noopener" aria-label="GitHub"><i class="ph ph-github-logo" aria-hidden="true"></i></a>
+        <a href="https://discord.com/invite/k3yUgsYVcB" target="_blank" rel="noopener" aria-label="Discord"><i class="ph ph-discord-logo" aria-hidden="true"></i></a>
+        <a href="cv.html" aria-label="CV"><i class="ph ph-file-text" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
-

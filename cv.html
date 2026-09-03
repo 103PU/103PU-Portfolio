@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV | Phạm Quang Dũng</title>
+  <meta name="description" content="CV of Phạm Quang Dũng (103_PU) - UI/UX Designer & Fullstack Developer.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="css/cv.css">
+</head>
+<body>
+  <!-- Floating Actions bar (Language toggle + Print CV button) -->
+  <div class="cv-actions-bar no-print">
+    <div class="container actions-container">
+      <a class="btn-back" href="./index.html" aria-label="Về Portfolio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span data-en="Back to Portfolio" data-vi="Về Portfolio">Về Portfolio</span>
+      </a>
+      <div class="actions-right">
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="vi">VI</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="btn-print" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span data-en="Print CV" data-vi="In CV / Xuất PDF">In CV / Xuất PDF</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main CV Container -->
+  <main class="cv-wrapper container">
+    <div class="glass-panel cv-card">
+      <!-- Top Hero Section -->
+      <header class="cv-header">
+        <div class="header-main">
+          <h1 class="gradient-title">Phạm Quang Dũng</h1>
+          <h2 data-en="UI/UX Designer & Fullstack Developer" data-vi="UI/UX Designer & Fullstack Developer">UI/UX Designer & Fullstack Developer</h2>
+          <p class="summary-text" data-en="A product-focused builder specializing in UI/UX systems and robust full-stack delivery. Proficient in engineering clean web solutions, optimizing workflows, and deploying complete features from conception to staging." data-vi="Nhà phát triển hướng sản phẩm chuyên sâu về hệ thống UI/UX và lập trình full-stack thực chiến. Có khả năng tự thiết kế, lập trình và đưa sản phẩm lên production một cách độc lập từ A-Z.">Nhà phát triển hướng sản phẩm chuyên sâu về hệ thống UI/UX và lập trình full-stack thực chiến. Có khả năng tự thiết kế, lập trình và đưa sản phẩm lên production một cách độc lập từ A-Z.</p>
+        </div>
+        <div class="header-status">
+          <span class="badge-glass availability-badge">
+            <span class="availability-dot"></span>
+            <span data-en="Available for Work" data-vi="Sẵn sàng nhận việc">Sẵn sàng nhận việc</span>
+          </span>
+        </div>
+      </header>
+
+      <!-- Content Grid -->
+      <div class="cv-grid">
+        <!-- Sidebar Column -->
+        <aside class="cv-sidebar">
+          <!-- Contact Info -->
+          <section class="sidebar-section">
+            <h3 class="section-title-small" data-en="Contact" data-vi="Liên hệ">Liên hệ</h3>
+            <ul class="contact-list">
+              <li>
+                <span class="label">Email:</span>
+                <a href="mailto:dungbd2005@gmail.com" class="val">dungbd2005@gmail.com</a>
+              </li>
+              <li>
+                <span class="label">GitHub:</span>
+                <a href="https://github.com/103PU" target="_blank" class="val">github.com/103PU</a>
+              </li>
+              <li>
+                <span class="label" data-en="Portfolio:" data-vi="Portfolio:">Portfolio:</span>
+                <a href="./index.html" class="val">dungbd2005.dev</a>
+              </li>
+              <li>
+                <span class="label" data-en="Location:" data-vi="Vị trí:">Vị trí:</span>
+                <span class="val" data-en="Ho Chi Minh City, VN" data-vi="TP. Hồ Chí Minh, VN">TP. Hồ Chí Minh, VN</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Skills tags with colored proficiency -->
+          <section class="sidebar-section">
+            <h3 class="section-title-small" data-en="Skills" data-vi="Kỹ năng">Kỹ năng</h3>
+            <div class="skills-tags-group">
+              <span class="tag-glass category-design" data-en="Figma UI/UX (Expert)" data-vi="Figma UI/UX (Thành thạo)">Figma UI/UX (Thành thạo)</span>
+              <span class="tag-glass category-design" data-en="Design Systems (Expert)" data-vi="Design System (Thành thạo)">Design System (Thành thạo)</span>
+              <span class="tag-glass category-frontend" data-en="HTML & CSS (Expert)" data-vi="HTML & CSS (Thành thạo)">HTML & CSS (Thành thạo)</span>
+              <span class="tag-glass category-frontend" data-en="JavaScript (Expert)" data-vi="JavaScript (Thành thạo)">JavaScript (Thành thạo)</span>
+              <span class="tag-glass category-frontend" data-en="React & TS (Proficient)" data-vi="React & TS (Khá)">React & TS (Khá)</span>
+              <span class="tag-glass category-frontend" data-en="TailwindCSS (Expert)" data-vi="TailwindCSS (Thành thạo)">TailwindCSS (Thành thạo)</span>
+              <span class="tag-glass category-backend" data-en="Node.js (Proficient)" data-vi="Node.js (Khá)">Node.js (Khá)</span>
+              <span class="tag-glass category-backend" data-en="CF Workers (Proficient)" data-vi="CF Workers (Khá)">CF Workers (Khá)</span>
+              <span class="tag-glass category-backend" data-en="D1 & SQL (Proficient)" data-vi="D1 & SQL (Khá)">D1 & SQL (Khá)</span>
+              <span class="tag-glass category-ai" data-en="AI-Assisted Dev (Expert)" data-vi="AI-Assisted Dev (Thành thạo)">AI-Assisted Dev (Thành thạo)</span>
+              <span class="tag-glass category-ai" data-en="Git & Agile (Expert)" data-vi="Git & Agile (Thành thạo)">Git & Agile (Thành thạo)</span>
+            </div>
+          </section>
+
+          <!-- Education -->
+          <section class="sidebar-section">
+            <h3 class="section-title-small" data-en="Education" data-vi="Học vấn">Học vấn</h3>
+            <div class="edu-item">
+              <h4 class="edu-title">Eastern International University</h4>
+              <p class="edu-degree" data-en="B.S. in Computer Science" data-vi="Cử nhân Khoa học Máy tính">Cử nhân Khoa học Máy tính</p>
+              <p class="edu-date" data-en="Sep 2024 - Present" data-vi="T9/2024 - Hiện tại">T9/2024 - Hiện tại</p>
+              <p class="edu-gpa">GPA: 3.43 / 4.0</p>
+            </div>
+          </section>
+        </aside>
+
+        <!-- Main Work Experience & Projects Column -->
+        <div class="cv-main">
+          <!-- Experience Statement -->
+          <section class="cv-section">
+            <h3 class="section-title-medium" data-en="Projects & Experience" data-vi="Kinh nghiệm & Dự án">Kinh nghiệm & Dự án</h3>
+            
+            <div class="cv-projects-list">
+              <!-- Project 1 -->
+              <article class="cv-project-card">
+                <div class="project-header">
+                  <h4 class="project-title">Key License Dashboard</h4>
+                  <span class="project-time" data-en="2025" data-vi="2025">2025</span>
+                </div>
+                <p class="project-desc" data-en="Designed and engineered a full admin portal managing product licenses, featuring key issuance, connected device tracking, anomaly-based risk detection, and analytics dashboards. Implemented with Cloudflare Workers, D1 Database, and Figma design tokens." data-vi="Thiết kế và phát triển cổng quản trị license: phát key, theo dõi thiết bị kết nối, phát hiện rủi ro bất thường và bảng phân tích số liệu. Triển khai bằng Cloudflare Workers, cơ sở dữ liệu D1 và design system trên Figma.">Thiết kế và phát triển cổng quản trị license: phát key, theo dõi thiết bị kết nối, phát hiện rủi ro bất thường và bảng phân tích số liệu. Triển khai bằng Cloudflare Workers, cơ sở dữ liệu D1 và design system trên Figma.</p>
+              </article>
+
+              <!-- Project 2 -->
+              <article class="cv-project-card">
+                <div class="project-header">
+                  <h4 class="project-title">Valorant Tweaks</h4>
+                  <span class="project-time" data-en="2024" data-vi="2024">2024</span>
+                </div>
+                <p class="project-desc" data-en="Created a high-performance Windows optimization toolkit for Valorant players. Integrated system optimizers, secure DNS swappers, GPU tweak configurations, and custom Windows Registry modifiers behind a polished, Riot Games-inspired WPF layout." data-vi="Xây dựng bộ công cụ tối ưu hóa Windows hiệu năng cao cho người chơi Valorant. Tích hợp dọn dẹp hệ thống, chuyển đổi DNS nhanh, tinh chỉnh GPU và Registry, đóng gói trong giao diện WPF lấy cảm hứng từ Riot Games.">Xây dựng bộ công cụ tối ưu hóa Windows hiệu năng cao cho người chơi Valorant. Tích hợp dọn dẹp hệ thống, chuyển đổi DNS nhanh, tinh chỉnh GPU và Registry, đóng gói trong giao diện WPF lấy cảm hứng từ Riot Games.</p>
+              </article>
+
+              <!-- Project 3 -->
+              <article class="cv-project-card">
+                <div class="project-header">
+                  <h4 class="project-title">AAO Assistance</h4>
+                  <span class="project-time" data-en="2024" data-vi="2024">2024</span>
+                </div>
+                <p class="project-desc" data-en="Developed an AI-integrated Chrome Extension academic assistant for EIU students. Parser reads schedules directly from student portal sessions to run conflict checkers, prerequisite alerts, GPA projections, and course evaluation models locally." data-vi="Phát triển tiện ích mở rộng Chrome làm trợ lý học thuật AI cho sinh viên EIU. Bộ parser đọc lịch học trực tiếp từ phiên đăng nhập của sinh viên để kiểm tra trùng lịch, cảnh báo môn tiên quyết, phân tích GPA và gợi ý môn học cục bộ.">Phát triển tiện ích mở rộng Chrome làm trợ lý học thuật AI cho sinh viên EIU. Bộ parser đọc lịch học trực tiếp từ phiên đăng nhập của sinh viên để kiểm tra trùng lịch, cảnh báo môn tiên quyết, phân tích GPA và gợi ý môn học cục bộ.</p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Core Strengths -->
+          <section class="cv-section">
+            <h3 class="section-title-medium" data-en="Core Philosophies" data-vi="Triết lý làm việc">Triết lý làm việc</h3>
+            <div class="philosophies-grid">
+              <div class="philo-item">
+                <h4 data-en="Solo Delivery Mindset" data-vi="Tư duy tự triển khai">Tư duy tự triển khai</h4>
+                <p data-en="Comfortable owning the entire lifecycle: wireframing interfaces in Figma, styling tokens, coding React/vanilla frontends, constructing APIs, and configuring serverless cloud deploys." data-vi="Tự tin làm chủ toàn bộ chu kỳ phát triển: phác thảo UI trên Figma, thiết lập design token, code frontend, xây dựng API và cấu hình triển khai lên cloud serverless.">Tự tin làm chủ toàn bộ chu kỳ phát triển: phác thảo UI trên Figma, thiết lập design token, code frontend, xây dựng API và cấu hình triển khai lên cloud serverless.</p>
+              </div>
+              <div class="philo-item">
+                <h4 data-en="AI-Assisted Efficiency" data-vi="Tối ưu hóa bằng AI">Tối ưu hóa bằng AI</h4>
+                <p data-en="Utilize advanced LLM pair-programming tools and developer agents to accelerate coding operations, optimize review cycles, and scale productivity without compromising architectural clean code." data-vi="Áp dụng các mô hình LLM và công cụ lập trình AI để tăng tốc độ phát triển, tối ưu hóa quá trình review code và nâng cao năng suất mà vẫn đảm bảo tính sạch sẽ của kiến trúc hệ thống.">Áp dụng các mô hình LLM và công cụ lập trình AI để tăng tốc độ phát triển, tối ưu hóa quá trình review code và nâng cao năng suất mà vẫn đảm bảo tính sạch sẽ của kiến trúc hệ thống.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
